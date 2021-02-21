@@ -738,7 +738,7 @@ div.task-option label {
 /* ---------------------------------- about --------------------------------- */
 
 #about #profile {
-  border: 2px solid #3F5EFB;
+  /* border: 2px solid #3F5EFB; */
 
 }
 
@@ -772,11 +772,11 @@ div.task-option label {
 }
 
 #about #biography>* {
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
 }
 
 #about #biography p:first-of-type {
-  padding-bottom: 1rem;
+  /* padding-bottom: 1rem; */
 }
 
 
