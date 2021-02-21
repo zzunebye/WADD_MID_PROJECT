@@ -258,6 +258,7 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   margin-left: 7rem;
   padding: 1rem;
+  margin: 1rem 1rem 1rem 7rem;
 }
 
 .page {
@@ -358,6 +359,7 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
+
 /* --------------------------- photo grid: content -------------------------- */
 
 .grid-content-page {
@@ -391,6 +393,18 @@ body::-webkit-scrollbar-thumb {
   visibility: hidden;
   position: absolute;
   left: -50em;
+}
+
+#backBtArticle {
+  color: gainsboro;
+  font-size: small;
+  font-weight: 200;
+  /* padding-bottom: 1rem;
+  margin-bottom: 1rem; */
+}
+
+#article-wrapper{
+  /* padding-top: 1rem; */
 }
 
 /* ------------------------------- travel note ------------------------------ */

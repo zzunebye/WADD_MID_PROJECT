@@ -132,6 +132,9 @@ function backToArticles() {
   PAGES.articles.grid.classList.remove("blur");
   PAGES.articles.title.classList.add("blur");
   PAGES.articles.article.classList.add("blur");
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+
 }
 
 function open_article(id) {
@@ -148,7 +151,7 @@ function open_article(id) {
     .then(json => {
       console.log(json);
       // PAGES.articles.content.classList.add("active");
-      PAGES.articles.title.innerHTML = `${json.name}`
+      PAGES.articles.title.innerHTML = `${json.title}`
       PAGES.articles.article.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla ut ante tincidunt, vel cursus dolor luctus. Etiam semper, turpis non tristique varius, velit odio feugiat nisi, ut dignissim ante ligula vitae urna. Sed id cursus libero. Vivamus eget risus commodo, volutpat nisi eget, varius mauris. Pellentesque finibus dictum nunc, sit amet ultricies turpis mattis congue. Maecenas id convallis magna, sit amet tincidunt est. Sed a risus vehicula, sodales arcu euismod, porta neque. Aliquam vulputate, erat quis finibus sagittis, tellus augue molestie metus, sed auctor leo nulla vel libero. Nunc ante arcu, congue non nibh ac, gravida pellentesque turpis. Praesent velit magna, porttitor eu gravida non, bibendum nec lectus. Suspendisse feugiat ullamcorper risus, ac tempor lacus rhoncus sit amet. Nunc vel suscipit erat. Maecenas condimentum tempor erat eget dignissim. Nunc vehicula, tortor eu sollicitudin commodo, diam ligula hendrerit neque, sit amet hendrerit mauris magna nec enim. In hac habitasse platea dictumst. Sed nibh nulla, euismod vel vestibulum a, commodo non diam.
     
     Vestibulum sit amet lacus at enim scelerisque pharetra eget in nunc. Etiam in porttitor arcu. Praesent eu hendrerit turpis. Sed semper diam lectus, eleifend rhoncus tellus condimentum ultrices. Morbi aliquam velit tristique, gravida nisi ut, cursus mauris. Aenean congue, lacus commodo pulvinar convallis, ligula dolor suscipit orci, in iaculis arcu eros viverra tortor. Duis nec lobortis metus, vel elementum sem. Donec nec magna id augue tincidunt congue ut tempus augue. Etiam in aliquam neque.
@@ -161,7 +164,8 @@ function open_article(id) {
     </p>`
     });
 
-
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 function getRandomInt(max) {
@@ -349,6 +353,23 @@ pageFunctions.practice = function () {
 
   document.getElementById('markdownprac').innerHTML =
     marked('# Marked in the browser\n\nRendered by **marked**.');
+
+  // var textPromise = blob.text();
+  // blob.text().then(text => /* do something with the text */ );
+  // var text = await blob.text();
+
+  let reader = new FileReader();
+
+  reader.readAsText("./src/COMP3421_WADD.md");
+
+  reader.onload = function () {
+    console.log(reader.result);
+  };
+
+  reader.onerror = function () {
+    console.log(reader.error);
+  };
+
 };
 
 /* -------------------------------------------------------------------------- */
