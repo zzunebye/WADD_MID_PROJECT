@@ -7,24 +7,21 @@ position -> 기존 위치를 바탕으로 무엇을 기준으로 해당 엘리�
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans&display=swap");
 
 :root {
-  font-size: 16px;
-  font-family: 'Open Sans';
+  font-size: 13px;
+  /* font-family: 'Open Sans'; */
   font-weight: 400;
 
-  /* --text-primary: #b6b6b6;
-  --text-secondary: #ececec;
-  --bg-primary: #23232e;
-  --bg-secondary: #141418; */
   --transition-speed: 600ms;
 }
 
 * {
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
   box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
+  /* list-style: none; */
+  /* text-decoration: none; */
+  font-family: "Noto Sans", sans-serif;
+
 }
 
 body {
@@ -42,7 +39,6 @@ body {
   margin: 0 auto;
   /* padding: 10px; */
   color: #fff;
-  font-family: "Noto Sans", sans-serif;
 }
 
 /* 
@@ -62,6 +58,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* --------------------------------- Sidebar -------------------------------- */
+
+.wrapper .sidebar * {
+  padding: 0;
+  /* margin: 0; */
+}
 
 .wrapper {
   display: flex;
@@ -112,7 +113,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .wrapper .sidebar:hover .logo-text {
-  left: 0px;
+  left: -5px;
 }
 
 .wrapper .sidebar .link-text {
@@ -190,20 +191,25 @@ body::-webkit-scrollbar-thumb {
 }
 
 .wrapper .sidebar:hover .logo svg {
-  margin-left: 9.4rem;
+  margin-left: 9.7rem;
 }
 
 .wrapper .sidebar ul li {
-  display: flex;
+  font-size: small;
   padding: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid rgba(225, 225, 225, 225.05);
   /* width: 100%; */
+  /* align-items: center; */
 }
 
 .wrapper .sidebar ul li a {
+  /* display: inline-flex; */
+  /* flex-direction: row; */
+  align-items: center;
+
   color: #bdb8d7;
-  display: block;
+  /* display: block; */
   transition: var(--transition-speed);
   text-decoration: none;
   filter: grayscale(0%) opacity(1);
@@ -219,21 +225,19 @@ body::-webkit-scrollbar-thumb {
 
 .wrapper .sidebar ul li a .fas,
 .fab {
-  width: 25px;
+  /* width: 25px; */
 }
 
 .wrapper .sidebar ul li:hover {
   background: #594f8d;
 }
 
-.wrapper .sidebar ul li:hover a {}
-
 .wrapper .sidebar .social_media {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+  display: block;
 }
 
 .wrapper .sidebar .social_media a {
@@ -247,7 +251,16 @@ body::-webkit-scrollbar-thumb {
   color: #bdb8d7;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+  align-items: center;
+}
 
+.wrapper .sidebar .social_media a i {
+  position: relative;
+  top: 40%;
+}
+
+.wrapper .sidebar:hover .social_media  {
+  display: flex;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -370,12 +383,29 @@ body::-webkit-scrollbar-thumb {
   background-color: #bdb8d7;
   color: #fff;
   transition: all 1s linear;
+  list-style: circle;
   opacity: 1;
 }
 
-#article-wrapper > * {
+
+#article-wrapper>* {
   padding-bottom: 1rem;
-  
+  font-size: x-small;
+  /* padding: initial; */
+  /* margin: initial; */
+}
+
+#article-wrapper p,
+#article-wrapper li {
+  padding-bottom: 1rem;
+  font-size: x-small;
+  /* padding: initial; */
+  /* margin: initial; */
+}
+
+#article-wrapper img {
+  max-width: 60%;
+
 }
 
 .blur {
@@ -403,12 +433,16 @@ body::-webkit-scrollbar-thumb {
   margin-bottom: 1rem; */
 }
 
-#article-wrapper{
+#article-wrapper {
   /* padding-top: 1rem; */
 }
 
 /* ------------------------------- travel note ------------------------------ */
 
+#travel * {
+  /* padding:0; */
+  /* margin: 0; */
+}
 
 input[type="text"] {
   display: block;
@@ -479,6 +513,10 @@ input[type="text"] {
   transform: rotateY(180deg);
 }
 
+.travelcard ul {
+  padding-left: 0;
+}
+
 .travelcard li {
   list-style: none;
   padding-bottom: 10px;
@@ -506,6 +544,10 @@ input[type="text"] {
   clear:both;
   list-style:none;
 } */
+
+#tasks * {
+  margin: 0;
+}
 
 #tasks button:hover {
   color: blue;
@@ -536,9 +578,6 @@ input[type="text"] {
   transform: translateY(-3px) scale(1.05);
   /* cursor: pointer; */
   transition-duration: 0.5s;
-  /* transform: scale(1.1); */
-  /* filter: grayscale(30%) ; */
-  /* transform: rotate(-180deg); */
 
 }
 
@@ -567,7 +606,6 @@ div label[for='new-task'] {
   font-size: 15px;
   width: 60px;
   margin: 10px 0 0;
-  font-family: Lato, sans-serif;
   cursor: pointer;
 }
 
@@ -580,7 +618,6 @@ div label[for='new-task'] {
   border: 1px solid #ddd;
   background: #fff;
   border-radius: 5px;
-  /* font-family: Lato, sans  -serif; */
   color: #888;
 }
 
@@ -701,9 +738,10 @@ div.task-option label {
 /* ---------------------------------- about --------------------------------- */
 
 #about #profile {
- border: 2px solid #3F5EFB ;
- 
+  border: 2px solid #3F5EFB;
+
 }
+
 #about #pic-name {
   display: flex;
   align-items: center;
@@ -721,7 +759,7 @@ div.task-option label {
   display: inline-block;
   font-weight: 300;
   padding-left: 2em;
-  
+
 }
 
 #about #biography {
@@ -733,11 +771,11 @@ div.task-option label {
 
 }
 
-#about #biography > * {
+#about #biography>* {
   padding-bottom: 1rem;
 }
-#about #biography p:first-of-type
-{
+
+#about #biography p:first-of-type {
   padding-bottom: 1rem;
 }
 

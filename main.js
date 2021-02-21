@@ -85,9 +85,8 @@ pageFunctions.articles = function () {
   // fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
 
   fetch("./src/articles.json")
-  .then(response => response.json())
+    .then(response => response.json())
     .then(json => {
-      console.log(json);
       PAGES.articles.fetched = json;
       PAGES.articles.grid.innerHTML = json.reduce((acc, articles) => {
         return (acc += createArticles(articles));
@@ -148,28 +147,66 @@ function open_article(id) {
   document.querySelector('#backBtArticle').classList.remove('blur');
   document.querySelector('#articles-title').classList.add('blur');
   PAGES.articles.grid.classList.add("blur");
-  
-  PAGES.articles.fetched[id-1];
-  
-  const url = `https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles/${id}`
-  fetch(url)
-  .then(response => response.json())
-  .then(json => {
-      console.log(PAGES.articles.fetched[id-1]);
-      // console.log(json)
-      // PAGES.articles.content.classList.add("active");
-      PAGES.articles.title.innerHTML = `${json.title}`
-      PAGES.articles.article.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla ut ante tincidunt, vel cursus dolor luctus. Etiam semper, turpis non tristique varius, velit odio feugiat nisi, ut dignissim ante ligula vitae urna. Sed id cursus libero. Vivamus eget risus commodo, volutpat nisi eget, varius mauris. Pellentesque finibus dictum nunc, sit amet ultricies turpis mattis congue. Maecenas id convallis magna, sit amet tincidunt est. Sed a risus vehicula, sodales arcu euismod, porta neque. Aliquam vulputate, erat quis finibus sagittis, tellus augue molestie metus, sed auctor leo nulla vel libero. Nunc ante arcu, congue non nibh ac, gravida pellentesque turpis. Praesent velit magna, porttitor eu gravida non, bibendum nec lectus. Suspendisse feugiat ullamcorper risus, ac tempor lacus rhoncus sit amet. Nunc vel suscipit erat. Maecenas condimentum tempor erat eget dignissim. Nunc vehicula, tortor eu sollicitudin commodo, diam ligula hendrerit neque, sit amet hendrerit mauris magna nec enim. In hac habitasse platea dictumst. Sed nibh nulla, euismod vel vestibulum a, commodo non diam.
-    
-    Vestibulum sit amet lacus at enim scelerisque pharetra eget in nunc. Etiam in porttitor arcu. Praesent eu hendrerit turpis. Sed semper diam lectus, eleifend rhoncus tellus condimentum ultrices. Morbi aliquam velit tristique, gravida nisi ut, cursus mauris. Aenean congue, lacus commodo pulvinar convallis, ligula dolor suscipit orci, in iaculis arcu eros viverra tortor. Duis nec lobortis metus, vel elementum sem. Donec nec magna id augue tincidunt congue ut tempus augue. Etiam in aliquam neque.
-    
-    Etiam tempor tristique volutpat. Aenean interdum iaculis mauris et egestas. Vivamus libero sem, faucibus in hendrerit nec, finibus pulvinar erat. In at felis hendrerit magna fringilla scelerisque. Suspendisse potenti. Sed pretium, est eu dignissim fermentum, risus nunc maximus lacus, id accumsan massa risus eget lorem. Nulla vel ex sit amet eros dignissim pellentesque eget ac lacus. Phasellus lorem leo, mollis nec odio aliquet, commodo dictum turpis. Curabitur pellentesque urna non quam hendrerit, ac pulvinar metus varius. Maecenas nec nisi semper diam tempor tincidunt. Aliquam viverra finibus sem, eu dictum velit ultrices a. Mauris sit amet ante porttitor, tempus nulla in, consectetur nisi. Proin suscipit hendrerit quam, vel ullamcorper mauris facilisis non. In eu mollis odio.
-    
-    Nullam sem lorem, pharetra id nisi ornare, faucibus scelerisque nisl. Suspendisse eu pellentesque lectus, et tincidunt odio. In porttitor vulputate turpis quis fermentum. Nulla mollis vehicula arcu at dapibus. Nam non felis eget mi blandit pellentesque. Sed vel arcu ut eros maximus aliquam. Praesent ac scelerisque magna, ac vehicula lectus. Fusce bibendum, lectus et posuere sollicitudin, turpis dui euismod ante, id dictum urna nisi sit amet ligula. Sed a tortor ex. Pellentesque sagittis tincidunt orci, nec posuere felis faucibus finibus. Maecenas vitae urna dapibus, dapibus est eu, varius velit. Praesent vel porta erat, eu laoreet massa. Duis rhoncus tincidunt suscipit. Aenean pretium, nibh ut aliquam maximus, nulla tellus scelerisque est, a facilisis ipsum sem ac est.
-    
-    Praesent sit amet nisl eu lacus hendrerit vestibulum at at neque. Nulla vitae tristique metus. Mauris efficitur est ac erat elementum consequat. Ut molestie libero ut ultricies tempor. Sed risus dolor, varius quis ex non, cursus egestas nibh. Aliquam dapibus, eros vitae dapibus sodales, dui libero accumsan nibh, ultrices pharetra urna enim eu lacus. Phasellus euismod, turpis a consectetur varius, velit massa finibus purus, eu malesuada quam ante in augue. Sed non convallis odio. In hac habitasse platea dictumst.
-    </p>`
-    });
+  let content = PAGES.articles.fetched[id - 1];
+  PAGES.articles.title.innerHTML = content.title;
+  // PAGES.articles.article.innerHTML = content.text;
+
+  // fetch(`./src/${content.text}`).then(function (response) {
+  //   // The API call was successful!
+  //   return response.text();
+  // }).then(function (html) {
+  //   // This is the HTML from our response as a text string
+  //   // console.log(html);
+  //   // Convert the HTML string into a document object
+  //   var parser = new DOMParser();
+  //   var doc = parser.parseFromString(html, 'text/html');
+  //   console.log(doc.body);
+  //   PAGES.articles.article.appendChild(doc.body);
+
+  //   // Get the image file
+  //   var img = doc.querySelector('img');
+  //   console.log(img);
+  // }).catch(function (err) {
+  //   // There was an error
+  //   console.warn('Something went wrong.', err);
+  // });
+
+  fetch(`./src/md/${content.title}.md`).then(function (response) {
+    // The API call was successful!
+    return response.text();
+  }).then(function (html) {
+    // This is the HTML from our response as a text string
+    console.log(content.title);
+    PAGES.articles.title.innerHTML =
+      marked(html);
+
+  }).catch(function (err) {
+    // There was an error
+    console.warn('Something went wrong.', err);
+  });
+
+
+
+
+  // const url = `https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles/${id}`
+  // fetch(url)
+  // .then(response => response.json())
+  // .then(json => {
+  //     // console.log(PAGES.articles.fetched[id-1].title);
+  //     // console.log(json)
+  //     // PAGES.articles.content.classList.add("active");
+  //     PAGES.articles.title.innerHTML = `${json.title}`
+  //     PAGES.articles.article.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla ut ante tincidunt, vel cursus dolor luctus. Etiam semper, turpis non tristique varius, velit odio feugiat nisi, ut dignissim ante ligula vitae urna. Sed id cursus libero. Vivamus eget risus commodo, volutpat nisi eget, varius mauris. Pellentesque finibus dictum nunc, sit amet ultricies turpis mattis congue. Maecenas id convallis magna, sit amet tincidunt est. Sed a risus vehicula, sodales arcu euismod, porta neque. Aliquam vulputate, erat quis finibus sagittis, tellus augue molestie metus, sed auctor leo nulla vel libero. Nunc ante arcu, congue non nibh ac, gravida pellentesque turpis. Praesent velit magna, porttitor eu gravida non, bibendum nec lectus. Suspendisse feugiat ullamcorper risus, ac tempor lacus rhoncus sit amet. Nunc vel suscipit erat. Maecenas condimentum tempor erat eget dignissim. Nunc vehicula, tortor eu sollicitudin commodo, diam ligula hendrerit neque, sit amet hendrerit mauris magna nec enim. In hac habitasse platea dictumst. Sed nibh nulla, euismod vel vestibulum a, commodo non diam.
+
+  //   Vestibulum sit amet lacus at enim scelerisque pharetra eget in nunc. Etiam in porttitor arcu. Praesent eu hendrerit turpis. Sed semper diam lectus, eleifend rhoncus tellus condimentum ultrices. Morbi aliquam velit tristique, gravida nisi ut, cursus mauris. Aenean congue, lacus commodo pulvinar convallis, ligula dolor suscipit orci, in iaculis arcu eros viverra tortor. Duis nec lobortis metus, vel elementum sem. Donec nec magna id augue tincidunt congue ut tempus augue. Etiam in aliquam neque.
+
+  //   Etiam tempor tristique volutpat. Aenean interdum iaculis mauris et egestas. Vivamus libero sem, faucibus in hendrerit nec, finibus pulvinar erat. In at felis hendrerit magna fringilla scelerisque. Suspendisse potenti. Sed pretium, est eu dignissim fermentum, risus nunc maximus lacus, id accumsan massa risus eget lorem. Nulla vel ex sit amet eros dignissim pellentesque eget ac lacus. Phasellus lorem leo, mollis nec odio aliquet, commodo dictum turpis. Curabitur pellentesque urna non quam hendrerit, ac pulvinar metus varius. Maecenas nec nisi semper diam tempor tincidunt. Aliquam viverra finibus sem, eu dictum velit ultrices a. Mauris sit amet ante porttitor, tempus nulla in, consectetur nisi. Proin suscipit hendrerit quam, vel ullamcorper mauris facilisis non. In eu mollis odio.
+
+  //   Nullam sem lorem, pharetra id nisi ornare, faucibus scelerisque nisl. Suspendisse eu pellentesque lectus, et tincidunt odio. In porttitor vulputate turpis quis fermentum. Nulla mollis vehicula arcu at dapibus. Nam non felis eget mi blandit pellentesque. Sed vel arcu ut eros maximus aliquam. Praesent ac scelerisque magna, ac vehicula lectus. Fusce bibendum, lectus et posuere sollicitudin, turpis dui euismod ante, id dictum urna nisi sit amet ligula. Sed a tortor ex. Pellentesque sagittis tincidunt orci, nec posuere felis faucibus finibus. Maecenas vitae urna dapibus, dapibus est eu, varius velit. Praesent vel porta erat, eu laoreet massa. Duis rhoncus tincidunt suscipit. Aenean pretium, nibh ut aliquam maximus, nulla tellus scelerisque est, a facilisis ipsum sem ac est.
+
+  //   Praesent sit amet nisl eu lacus hendrerit vestibulum at at neque. Nulla vitae tristique metus. Mauris efficitur est ac erat elementum consequat. Ut molestie libero ut ultricies tempor. Sed risus dolor, varius quis ex non, cursus egestas nibh. Aliquam dapibus, eros vitae dapibus sodales, dui libero accumsan nibh, ultrices pharetra urna enim eu lacus. Phasellus euismod, turpis a consectetur varius, velit massa finibus purus, eu malesuada quam ante in augue. Sed non convallis odio. In hac habitasse platea dictumst.
+  //   </p>`
+  //   });
 
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
@@ -184,7 +221,6 @@ pageFunctions.travel = function () {
   fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/travel")
     .then(response => response.json())
     .then(json => {
-      console.log(json);
       PAGES.travel.cards.innerHTML = json.reduce((acc, place) => {
         return (acc += createTravelCard(place));
       }, "");
@@ -281,10 +317,8 @@ editTask = (obj) => {
 // Delete an existing task
 deleteTask = (obj) => {
   console.log("Delete task...");
-  console.log(obj);
   let listItem = obj.parentNode.parentNode;
   let ul = listItem.parentNode;
-  console.log(ul);
 
   //Remove the parent list item from the ul
   ul.removeChild(listItem);
@@ -321,17 +355,6 @@ checkBoxHandler = (obj) => {
 
 /* -------------------------------- practice -------------------------------- */
 
-
-// fs.readFile('/src/COMP3421_WADD.md', 'utf8', (err, data) => {
-//   if (err) {
-//     console.error(err)
-//     return
-//   }
-//   console.log(data)
-// })
-
-
-
 pageFunctions.toll = function () {
   fetch("https://hotell.difi.no/api/json/bergen/dokart")
     .then(response => response.json())
@@ -352,20 +375,7 @@ function tollInfo(toll) { // HTML을 생성하는 함수
   </div>
   `;
 }
-pageFunctions.practice = function () {
-  // https://github.com/zzunebye/WADD_MID_PROJECT/blob/main/src/COMP3421_WADD.md
-  // ./src/COMP3421_WADD.md
-  fetch("https://github.com/zzunebye/WADD_MID_PROJECT/blob/main/src/COMP3421_WADD.md")
-    .then(resource => response.text())
-    .then(result => console.log(result));
-    // document.getElementById('content').innerHTML = marked(result)
-  // fetch("https://raw.githubusercontent.com/zzunebye/WADD_MID_PROJECT/blob/main/src/COMP3421_WADD.md")
-  //   .then(resource => response.blob())
-  //   .then(result => console.log(result));
-  
-  
-  
-}
+
 /* -------------------------------------------------------------------------- */
 /*                                 Navigation                                 */
 /* -------------------------------------------------------------------------- */

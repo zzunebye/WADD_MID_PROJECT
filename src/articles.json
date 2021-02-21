@@ -1,14 +1,14 @@
 [{
         "id": "1",
-        "title": "Roam: How to use it",
+        "title": "Roam - How to use it",
         "createdAt": "2020-04-29T09:50:31.617Z",
         "name": "Mittie Cartwright",
         "about": "Roam, notetaking, roam research",
-        "text": "text 1"
+        "text": "article1.html"
     },
     {
         "id": "2",
-        "title": "What does GPU do?",
+        "title": "What does GPU do",
         "createdAt": "2020-05-12T09:53:39.074Z",
         "name": "Earlene Hane",
         "about": "GPU",
@@ -52,7 +52,7 @@
         "name": "Mariane Klein",
         "about": "Deep Learning, Backpropagation",
         "text": "text 7",
-        "title": "Deep Learning: Backpropagation"
+        "title": "Deep Learning - Backpropagation"
     },
     {
         "id": "8",
@@ -60,7 +60,7 @@
         "name": "Maximilian Schaefer",
         "about": "Deep Learning Algorithms, BERT",
         "text": "text 8",
-        "title": "What is BERT?"
+        "title": "What is BERT"
     },
     {
         "id": "9",
@@ -84,7 +84,7 @@
         "name": "Joe Nienow",
         "about": "WEB DEV",
         "text": "text 11",
-        "title": "WEB DEV Course note 1"
+        "title": "WEB DEV Course note 2"
     },
     {
         "id": "12",
@@ -92,11 +92,11 @@
         "name": "Chaim Reilly",
         "about": "Mobile Computing, signal",
         "text": "text 12",
-        "title": "Mobile Computing: Signal"
+        "title": "Mobile Computing - Signal"
     },
     {
         "id": "13",
-        "title": "Mobile Computing: Frequency",
+        "title": "Mobile Computing - Frequency",
         "createdAt": "2020-10-06T05:04:52.596Z",
         "name": "Colten Gleason",
         "about": "Mobile, bandwidth,Frequency",
@@ -104,7 +104,7 @@
     },
     {
         "id": "14",
-        "title": "Mobile Computing: Frequency 2",
+        "title": "Mobile Computing - Frequency 2",
         "createdAt": "2020-09-05T13:57:05.779Z",
         "name": "Remington Hand",
         "about": "Mobile, bluetooth",
