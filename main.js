@@ -27,6 +27,7 @@ PAGES.articles.content = document.querySelector("#grid-content-page");
 PAGES.articles.title = document.querySelector("#article-head");
 PAGES.articles.article = document.querySelector("#article-content");
 PAGES.articles.cards = document.getElementsByClassName("card");
+PAGES.articles.fetched;
 
 
 // Some other page
@@ -81,10 +82,13 @@ pageFunctions.page404 = function () {
 
 
 pageFunctions.articles = function () {
-  fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
-    .then(response => response.json())
+  // fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
+
+  fetch("./src/articles.json")
+  .then(response => response.json())
     .then(json => {
       console.log(json);
+      PAGES.articles.fetched = json;
       PAGES.articles.grid.innerHTML = json.reduce((acc, articles) => {
         return (acc += createArticles(articles));
       }, "");
@@ -144,12 +148,15 @@ function open_article(id) {
   document.querySelector('#backBtArticle').classList.remove('blur');
   document.querySelector('#articles-title').classList.add('blur');
   PAGES.articles.grid.classList.add("blur");
-
+  
+  PAGES.articles.fetched[id-1];
+  
   const url = `https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles/${id}`
   fetch(url)
-    .then(response => response.json())
-    .then(json => {
-      console.log(json);
+  .then(response => response.json())
+  .then(json => {
+      console.log(PAGES.articles.fetched[id-1]);
+      // console.log(json)
       // PAGES.articles.content.classList.add("active");
       PAGES.articles.title.innerHTML = `${json.title}`
       PAGES.articles.article.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla ut ante tincidunt, vel cursus dolor luctus. Etiam semper, turpis non tristique varius, velit odio feugiat nisi, ut dignissim ante ligula vitae urna. Sed id cursus libero. Vivamus eget risus commodo, volutpat nisi eget, varius mauris. Pellentesque finibus dictum nunc, sit amet ultricies turpis mattis congue. Maecenas id convallis magna, sit amet tincidunt est. Sed a risus vehicula, sodales arcu euismod, porta neque. Aliquam vulputate, erat quis finibus sagittis, tellus augue molestie metus, sed auctor leo nulla vel libero. Nunc ante arcu, congue non nibh ac, gravida pellentesque turpis. Praesent velit magna, porttitor eu gravida non, bibendum nec lectus. Suspendisse feugiat ullamcorper risus, ac tempor lacus rhoncus sit amet. Nunc vel suscipit erat. Maecenas condimentum tempor erat eget dignissim. Nunc vehicula, tortor eu sollicitudin commodo, diam ligula hendrerit neque, sit amet hendrerit mauris magna nec enim. In hac habitasse platea dictumst. Sed nibh nulla, euismod vel vestibulum a, commodo non diam.
@@ -346,32 +353,19 @@ function tollInfo(toll) { // HTML을 생성하는 함수
   `;
 }
 pageFunctions.practice = function () {
-  fetch("./src/COMP3421_WADD.md")
-    .then(text => {
-      console.log(text);
-    });
-
-  document.getElementById('markdownprac').innerHTML =
-    marked('# Marked in the browser\n\nRendered by **marked**.');
-
-  // var textPromise = blob.text();
-  // blob.text().then(text => /* do something with the text */ );
-  // var text = await blob.text();
-
-  let reader = new FileReader();
-
-  reader.readAsText("./src/COMP3421_WADD.md");
-
-  reader.onload = function () {
-    console.log(reader.result);
-  };
-
-  reader.onerror = function () {
-    console.log(reader.error);
-  };
-
-};
-
+  // https://github.com/zzunebye/WADD_MID_PROJECT/blob/main/src/COMP3421_WADD.md
+  // ./src/COMP3421_WADD.md
+  fetch("https://github.com/zzunebye/WADD_MID_PROJECT/blob/main/src/COMP3421_WADD.md")
+    .then(resource => response.text())
+    .then(result => console.log(result));
+    // document.getElementById('content').innerHTML = marked(result)
+  // fetch("https://raw.githubusercontent.com/zzunebye/WADD_MID_PROJECT/blob/main/src/COMP3421_WADD.md")
+  //   .then(resource => response.blob())
+  //   .then(result => console.log(result));
+  
+  
+  
+}
 /* -------------------------------------------------------------------------- */
 /*                                 Navigation                                 */
 /* -------------------------------------------------------------------------- */
