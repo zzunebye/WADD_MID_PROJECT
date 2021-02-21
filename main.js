@@ -87,6 +87,7 @@ pageFunctions.articles = function () {
   fetch("./src/articles.json")
     .then(response => response.json())
     .then(json => {
+      console.log(json);
       PAGES.articles.fetched = json;
       PAGES.articles.grid.innerHTML = json.reduce((acc, articles) => {
         return (acc += createArticles(articles));

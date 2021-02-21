@@ -74,7 +74,7 @@
         "id": "10",
         "createdAt": "2020-10-10T05:49:05.126Z",
         "name": "Orion Glover",
-        "about": "WEB DEV",
+        "about": "Web Development, web",
         "text": "text 10",
         "title": "WEB DEV Course note 1"
     },
@@ -82,7 +82,7 @@
         "id": "11",
         "createdAt": "2020-06-17T01:02:19.930Z",
         "name": "Joe Nienow",
-        "about": "WEB DEV",
+        "about": "Web Development",
         "text": "text 11",
         "title": "WEB DEV Course note 2"
     },
