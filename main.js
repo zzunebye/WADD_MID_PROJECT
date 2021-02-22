@@ -19,6 +19,14 @@
 // 여기서 각 오브젝트 프로퍼티는 해당 콘텐츠를 insert할 공간(요소)의 id를 담는다.
 PAGES = {};
 
+
+// Main page - Readme
+PAGES.readme = {};
+PAGES.readme.page = document.querySelector("#readme");
+PAGES.readme.content = document.querySelector("#readme-page");
+PAGES.readme.title = document.querySelector("#readme-head");
+PAGES.readme.article = document.querySelector("#readme-content");
+
 // Main page (Grid of articles)
 PAGES.articles = {};
 PAGES.articles.page = document.querySelector("#articles");
@@ -28,7 +36,6 @@ PAGES.articles.title = document.querySelector("#article-head");
 PAGES.articles.article = document.querySelector("#article-content");
 PAGES.articles.cards = document.getElementsByClassName("card");
 PAGES.articles.fetched;
-
 
 // Some other page
 PAGES.portfolio = {};
@@ -80,6 +87,24 @@ pageFunctions.page404 = function () {
 // To add some dynamic content to the page, we create a new custom function for the page "toll" and add a REST call.
 // fetch를 이용해 데이터를 불러온 후,tollInfo()를 실행한다.
 
+
+pageFunctions.readme = function () {
+  // fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
+  
+  
+  fetch(`./src/md/readme.md`).then(function (response) {
+    // The API call was successful!
+    return response.text();
+  }).then(function (html) {
+    // This is the HTML from our response as a text string
+    // console.log(content.title);
+    PAGES.readme.title.innerHTML = marked(html);
+
+  }).catch(function (err) {
+    // There was an error
+    console.warn('Something went wrong.', err);
+  });
+}
 
 pageFunctions.articles = function () {
   // fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
@@ -138,7 +163,6 @@ function backToArticles() {
   PAGES.articles.article.classList.add("blur");
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
-
 }
 
 function open_article(id) {
@@ -150,27 +174,7 @@ function open_article(id) {
   PAGES.articles.grid.classList.add("blur");
   let content = PAGES.articles.fetched[id - 1];
   PAGES.articles.title.innerHTML = content.title;
-  // PAGES.articles.article.innerHTML = content.text;
-
-  // fetch(`./src/${content.text}`).then(function (response) {
-  //   // The API call was successful!
-  //   return response.text();
-  // }).then(function (html) {
-  //   // This is the HTML from our response as a text string
-  //   // console.log(html);
-  //   // Convert the HTML string into a document object
-  //   var parser = new DOMParser();
-  //   var doc = parser.parseFromString(html, 'text/html');
-  //   console.log(doc.body);
-  //   PAGES.articles.article.appendChild(doc.body);
-
-  //   // Get the image file
-  //   var img = doc.querySelector('img');
-  //   console.log(img);
-  // }).catch(function (err) {
-  //   // There was an error
-  //   console.warn('Something went wrong.', err);
-  // });
+  // PAGES.artic
 
   fetch(`./src/md/${content.title}.md`).then(function (response) {
     // The API call was successful!
@@ -453,7 +457,7 @@ function tollInfo(toll) { // HTML을 생성하는 함수
   <h4 id="">About: ${toll.about}</h4>
   <div id="p_a">
     <p>${toll.text}</p>
-    <a href="https://zzunebye.github.io/WADD_MID_PROJECT/#articles">Link</a>
+    <a href="${toll.link}">Link</a>
     
   </div>
   </div>
@@ -479,7 +483,7 @@ function navigate() {
   var currentPage = path[0];
   if (!PAGES.hasOwnProperty(currentPage)) {
     if (path[0] === "") {
-      currentPage = "articles";
+      currentPage = "readme";
     } else {
       currentPage = "page404";
     }

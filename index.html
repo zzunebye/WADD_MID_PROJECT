@@ -67,10 +67,11 @@ Dependency: FontAwesome, Marked
           </g>
         </svg></div>
       <ul>
+        <li><a href="#readme"><i class="fab fa-markdown"></i><span class="link-text">ReadMe</span></a></li>
         <li><a href="#articles"><i class="fab fa-pied-piper-square"></i><span class="link-text">Articles</span></a></li>
         <li><a href="#travel"><i class="fas fa-globe-europe"></i><span class="link-text">Travel</span></a></li>
         <li><a href="#tasks"><i class="fas fa-tasks"></i><span class="link-text">Tasks</span></a></li>
-        <li><a href="#portfolio"><i class="fas fa-user"></i><span class="link-text">Toll</span></a></li>
+        <li><a href="#portfolio"><i class="fas fa-user"></i><span class="link-text">Portfolio</span></a></li>
         <li><a href="#about"><i class="fas fa-address-card"></i><span class="link-text">About</span></a></li>
       </ul>
       <div class="social_media">
@@ -86,12 +87,21 @@ Dependency: FontAwesome, Marked
 
     <div class="main_content">
       <!-- Front Page -->
-      <div id="articles" class="page active">
-
-
+      
+      <div id="readme" class="page active">
+        <div id="readme-page">
+          <a href="#articles" id="backBtArticle" class="blur" onclick="backToArticles()">&lt; Back to the list</a>
+          <article id="readme-wrapper">
+            <h2 id=readme-head></h2>
+            <div id=readme-content></div>
+          </article>
+        </div>
+      </div>
+      
+      
+      <div id="articles" class="page">
         <h1 id="articles-title">Blog Articles</h1>
         <div class="photo-grid" id="grid-blog">
-
         </div>
 
         <div id="grid-content-page">
@@ -119,6 +129,7 @@ Dependency: FontAwesome, Marked
         </div>
 
       </div>
+      
       
 
       <!-- ----------------------------- Travel Page ----------------------------- -->

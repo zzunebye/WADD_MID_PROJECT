@@ -1,50 +1,50 @@
 [{
-    "id": "1",
-    "title": "Kaggle Titanic Data Project",
-    "createdAt": "2020-04-29T09:50:31.617Z",
-    "name": "Mittie Cartwright",
-    "about": "Machine Leraning",
-    "text": "article1.html",
-    "link": "https://github.com/zzunebye/Titanic-Dataset-Challenge"
-},
-{
-    "id": "2",
-    "title": "Breaking Bad API & React",
-    "createdAt": "2020-05-12T09:53:39.074Z",
-    "name": "Earlene Hane",
-    "about": "React, AJAX",
-    "text": "",
-    "link": ""
-    
-},
-{
-    "id": "3",
-    "title": "Single Page App Homepage - using vanilla JS",
-    "createdAt": "2020-11-13T21:15:32.955Z",
-    "name": "Geoffrey O'Kon",
-    "about": "JS, CSS, Grid, Web",
-    "text": "text 3",
-    "link": "https://zzunebye.github.io/WADD_MID_PROJECT/"
-    
-},
-{
-    "id": "4",
-    "title": "AI Course Music genre Classification using 1DCNN and 2DCNN",
-    "createdAt": "2020-06-05T00:05:21.912Z",
-    "name": "Mia Runolfsson",
-    "about": "react, programming",
-    "text": "text 4",
-    "link": "https://github.com/zzunebye/COMP4432_Project-Music_Genre_Classification"
-    
-},
-{
-    "id": "5",
-    "createdAt": "2020-06-13T17:59:51.689Z",
-    "name": "Mrs. Julia Hilpert",
-    "about": "OS, operating system",
-    "text": "text 5",
-    "title": "BidtoGet - Commerce Bidding Website",
-    "link": ""
-    
-}
+        "id": "1",
+        "title": "Kaggle Titanic Data Project",
+        "createdAt": "2020-04-29T09:50:31.617Z",
+        "name": "Mittie Cartwright",
+        "about": "Machine Leraning",
+        "text": "Practiced several new methods that improved the performance of models, such as Pipeline, RandomizedGridSearch, or Voting methods, understanding more about the workflow of the machine learning process in addition to a deeper understanding of data leakage issues that must be concerned about the case where both train and test data are given.",
+        "link": "https://github.com/zzunebye/Titanic-Dataset-Challenge"
+    },
+    {
+        "id": "2",
+        "title": "Breaking Bad API & React",
+        "createdAt": "2020-05-12T09:53:39.074Z",
+        "name": "Earlene Hane",
+        "about": "React, AJAX",
+        "text": "",
+        "link": ""
+
+    },
+    {
+        "id": "3",
+        "title": "Single Page App Homepage - using vanilla JS",
+        "createdAt": "2020-11-13T21:15:32.955Z",
+        "name": "Geoffrey O'Kon",
+        "about": "JS, CSS, Grid, Web",
+        "text": "text 3",
+        "link": "https://zzunebye.github.io/WADD_MID_PROJECT/"
+
+    },
+    {
+        "id": "4",
+        "title": "AI Course Music genre Classification using 1DCNN and 2DCNN",
+        "createdAt": "2020-06-05T00:05:21.912Z",
+        "name": "Mia Runolfsson",
+        "about": "react, programming",
+        "text": "text 4",
+        "link": "https://github.com/zzunebye/COMP4432_Project-Music_Genre_Classification"
+
+    },
+    {
+        "id": "5",
+        "createdAt": "2020-06-13T17:59:51.689Z",
+        "name": "Mrs. Julia Hilpert",
+        "about": "OS, operating system",
+        "text": "text 5",
+        "title": "BidtoGet - Commerce Bidding Website",
+        "link": ""
+
+    }
 ]
