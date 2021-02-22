@@ -262,6 +262,8 @@ let completedTasksHolder = document.getElementById("completed-tasks");
 
 pageFunctions.tasks = function () {
   console.log("task page..")
+  let count_done = 0;
+  let count_undone = 0;
 
   var values = {},
     keys = Object.keys(localStorage),
@@ -269,7 +271,11 @@ pageFunctions.tasks = function () {
 
   while (i--) {
     values[keys[i]] = localStorage.getItem(keys);
+    console.log(values[keys[i]]);
+    (values[keys[i]] ? count_done++ : count_undone++)
   }
+  console.log(count_done);
+  console.log(count_undone);
 
   console.log(values);
 
@@ -328,7 +334,7 @@ function createNewTask(value, flag) {
 addTask = () => {
   console.log("Add task...");
   //Create a new list item with the text from #new-task:
-  const newTask = createNewTask(taskInput.value, flag);
+  const newTask = createNewTask(taskInput.value, 0);
   //Append listItem to incompleteTasksHolder
   incompleteTasksHolder.innerHTML += newTask;
   // bindTaskEvents(listItem, taskCompleted);
@@ -393,8 +399,8 @@ taskCompleted = (obj) => {
   completedTasksHolder.appendChild(listItem);
   listItem.classList.add("checked");
   let temp = listItem.querySelector("label").innerHTML;
-  console.log(temp);
-  console.log(localStorage.getItem(`${temp}`));
+  console.log("complete: ", temp);
+  // console.log("complete: ", localStorage.getItem(`${temp}`));
 
   // arr = [temp, 1];
   // console.log(arr);

@@ -4,7 +4,8 @@
     "createdAt": "2020-04-29T09:50:31.617Z",
     "name": "Mittie Cartwright",
     "about": "Machine Leraning",
-    "text": "article1.html"
+    "text": "article1.html",
+    "link": "https://github.com/zzunebye/Titanic-Dataset-Challenge"
 },
 {
     "id": "2",
@@ -12,7 +13,9 @@
     "createdAt": "2020-05-12T09:53:39.074Z",
     "name": "Earlene Hane",
     "about": "React, AJAX",
-    "text": ""
+    "text": "",
+    "link": ""
+    
 },
 {
     "id": "3",
@@ -20,7 +23,9 @@
     "createdAt": "2020-11-13T21:15:32.955Z",
     "name": "Geoffrey O'Kon",
     "about": "JS, CSS, Grid, Web",
-    "text": "text 3"
+    "text": "text 3",
+    "link": "https://zzunebye.github.io/WADD_MID_PROJECT/"
+    
 },
 {
     "id": "4",
@@ -28,7 +33,9 @@
     "createdAt": "2020-06-05T00:05:21.912Z",
     "name": "Mia Runolfsson",
     "about": "react, programming",
-    "text": "text 4"
+    "text": "text 4",
+    "link": "https://github.com/zzunebye/COMP4432_Project-Music_Genre_Classification"
+    
 },
 {
     "id": "5",
@@ -36,22 +43,8 @@
     "name": "Mrs. Julia Hilpert",
     "about": "OS, operating system",
     "text": "text 5",
-    "title": "OS is an interface between hardware and user apps"
-},
-{
-    "id": "6",
-    "createdAt": "2021-01-31T00:24:59.183Z",
-    "name": "Eudora Weber",
-    "about": "note taking",
-    "text": "text 6",
-    "title": "Write your idea into a note"
-},
-{
-    "id": "7",
-    "createdAt": "2020-08-21T01:09:53.904Z",
-    "name": "Mariane Klein",
-    "about": "Deep Learning, Backpropagation",
-    "text": "text 7",
-    "title": "Deep Learning - Backpropagation"
+    "title": "BidtoGet - Commerce Bidding Website",
+    "link": ""
+    
 }
 ]
