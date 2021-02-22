@@ -90,8 +90,8 @@ pageFunctions.page404 = function () {
 
 pageFunctions.readme = function () {
   // fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
-  
-  
+
+
   fetch(`./src/md/readme.md`).then(function (response) {
     // The API call was successful!
     return response.text();
@@ -108,6 +108,7 @@ pageFunctions.readme = function () {
 
 pageFunctions.articles = function () {
   // fetch("https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles")
+  // document.querySelector('#backBtArticle').classList.add('blur');
 
   fetch("./src/articles.json")
     .then(response => response.json())
@@ -166,6 +167,7 @@ function backToArticles() {
 }
 
 function open_article(id) {
+
   console.log("Fetching Article...");
   PAGES.articles.title.classList.remove("blur");
   PAGES.articles.article.classList.remove("blur");
