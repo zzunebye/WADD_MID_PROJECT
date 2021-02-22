@@ -657,7 +657,7 @@ div.task-head {
 }
 
 div.task-head label {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
 div.task-option {
@@ -736,11 +736,6 @@ div.task-option label {
 }
 
 /* ---------------------------------- about --------------------------------- */
-
-#about #profile {
-  /* border: 2px solid #3F5EFB; */
-
-}
 
 #about #pic-name {
   display: flex;

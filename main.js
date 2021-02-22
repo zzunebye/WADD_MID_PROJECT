@@ -270,7 +270,7 @@ function createNewTask(value) {
     </div>
     <input type="text">
     <div class="task-option">
-      <button class="edit" onclick="editTask(this)>Edit</button>
+      <button class="edit" onclick="editTask(this)">Edit</button>
       <button class="delete" onclick="deleteTask(this)">Delete</button>
     </div>
   </li>`
@@ -285,6 +285,16 @@ addTask = () => {
   //Append listItem to incompleteTasksHolder
   incompleteTasksHolder.innerHTML += newTask;
   // bindTaskEvents(listItem, taskCompleted);
+  
+  // let temp = JSON.stringify(newTask.innerHTML);
+  
+  // console.log(listItem);
+  // console.log(temp);
+  arr = [taskInput.value, 0];
+  console.log(arr);
+  localStorage.setItem(`${taskInput.value}`,JSON.stringify(arr));
+  // console.log( localStorage.getItem(`${taskInput.value}`));
+  
   taskInput.value = "";
 }
 
@@ -323,6 +333,11 @@ deleteTask = (obj) => {
 
   //Remove the parent list item from the ul
   ul.removeChild(listItem);
+  let temp = listItem.querySelector("label").innerHTML;
+  // console.log(temp);
+  console.log( localStorage.getItem(`${temp}`));
+  localStorage.removeItem(`${temp}`);
+
 }
 
 // Mark a task as complete 
@@ -330,9 +345,21 @@ taskCompleted = (obj) => {
   console.log("Task complete...");
   //Append the task list item to the #completed-tasks
   let listItem = obj.parentNode.parentNode;
+  
 
   completedTasksHolder.appendChild(listItem);
   listItem.classList.add("checked");
+  let temp = listItem.querySelector("label").innerHTML;
+  console.log(temp);
+  
+  
+  console.log( localStorage.getItem(`${temp}`));
+  
+  arr = [temp, 1];
+  // console.log(arr);
+  localStorage.setItem(`${temp}`,JSON.stringify(arr));
+  // console.log( localStorage.getItem(`${taskInput.value}`));
+  
 }
 
 // Mark a task as incomplete
