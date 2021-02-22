@@ -260,10 +260,42 @@ let addButton = document.getElementsByTagName("button")[0];
 let incompleteTasksHolder = document.getElementById("incomplete-tasks");
 let completedTasksHolder = document.getElementById("completed-tasks");
 
+pageFunctions.tasks = function () {
+  console.log("task page..")
+
+  var values = {},
+    keys = Object.keys(localStorage),
+    i = keys.length;
+
+  while (i--) {
+    values[keys[i]] = localStorage.getItem(keys);
+  }
+
+  console.log(values);
+
+  for (const value in values) {
+    // if (Object.hasOwnProperty.call(object, value)) {
+    //   const element = object[value];
+
+    // }
+    console.log(localStorage.getItem(value));
+    const newTask = createNewTask(value,localStorage.getItem(value));
+    if (localStorage.getItem(value) == 0) {
+      incompleteTasksHolder.innerHTML += newTask;
+
+    } else {
+      completedTasksHolder.innerHTML += newTask;
+
+    }
+  }
+
+}
+
 
 //New Task List Item
-function createNewTask(value) {
-  return `<li class="travelcard">
+function createNewTask(value, flag) {
+  if (flag == 0) {
+    return `<li class="travelcard">
     <div class="task-head">
       <input type="checkbox" onchange="checkBoxHandler(this)">
       <label>${value}</label>
@@ -274,6 +306,21 @@ function createNewTask(value) {
       <button class="delete" onclick="deleteTask(this)">Delete</button>
     </div>
   </li>`
+  } else {
+    return `<li class="travelcard">
+    <div class="task-head">
+      <input type="checkbox" onchange="checkBoxHandler(this)" checked>
+      <label>${value}</label>
+    </div>
+    <input type="text">
+    <div class="task-option">
+      <button class="edit" onclick="editTask(this)">Edit</button>
+      <button class="delete" onclick="deleteTask(this)">Delete</button>
+    </div>
+  </li>`
+  }
+
+
 }
 
 // function addTask
@@ -281,20 +328,18 @@ function createNewTask(value) {
 addTask = () => {
   console.log("Add task...");
   //Create a new list item with the text from #new-task:
-  const newTask = createNewTask(taskInput.value);
+  const newTask = createNewTask(taskInput.value, flag);
   //Append listItem to incompleteTasksHolder
   incompleteTasksHolder.innerHTML += newTask;
   // bindTaskEvents(listItem, taskCompleted);
-  
+
   // let temp = JSON.stringify(newTask.innerHTML);
-  
-  // console.log(listItem);
-  // console.log(temp);
-  arr = [taskInput.value, 0];
-  console.log(arr);
-  localStorage.setItem(`${taskInput.value}`,JSON.stringify(arr));
+
+  // arr = [taskInput.value, 0];
+  // console.log(arr);
+  localStorage.setItem(`${taskInput.value}`, 0);
   // console.log( localStorage.getItem(`${taskInput.value}`));
-  
+
   taskInput.value = "";
 }
 
@@ -335,9 +380,8 @@ deleteTask = (obj) => {
   ul.removeChild(listItem);
   let temp = listItem.querySelector("label").innerHTML;
   // console.log(temp);
-  console.log( localStorage.getItem(`${temp}`));
+  console.log(localStorage.getItem(`${temp}`));
   localStorage.removeItem(`${temp}`);
-
 }
 
 // Mark a task as complete 
@@ -345,21 +389,18 @@ taskCompleted = (obj) => {
   console.log("Task complete...");
   //Append the task list item to the #completed-tasks
   let listItem = obj.parentNode.parentNode;
-  
 
   completedTasksHolder.appendChild(listItem);
   listItem.classList.add("checked");
   let temp = listItem.querySelector("label").innerHTML;
   console.log(temp);
-  
-  
-  console.log( localStorage.getItem(`${temp}`));
-  
-  arr = [temp, 1];
+  console.log(localStorage.getItem(`${temp}`));
+
+  // arr = [temp, 1];
   // console.log(arr);
-  localStorage.setItem(`${temp}`,JSON.stringify(arr));
+  localStorage.setItem(`${temp}`, JSON.stringify(1));
   // console.log( localStorage.getItem(`${taskInput.value}`));
-  
+
 }
 
 // Mark a task as incomplete
@@ -368,6 +409,11 @@ taskIncomplete = (obj) => {
   // When checkbox is unchecked
   // Append the task list item #incomplete-tasks
   let listItem = obj.parentNode.parentNode;
+  let temp = listItem.querySelector("label").innerHTML;
+
+  // arr = [temp, 0];
+  localStorage.setItem(`${temp}`, JSON.stringify(0));
+
   incompleteTasksHolder.appendChild(listItem);
   listItem.classList.remove("checked");
 

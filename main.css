@@ -350,7 +350,7 @@ body::-webkit-scrollbar-thumb {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 .photo-grid .card span {
@@ -363,12 +363,13 @@ body::-webkit-scrollbar-thumb {
   color: linear-gradient(to bottom, #3F5EFB, #FC466B);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   text-shadow: 1px 1px 1px #000, 3px 3px 5px blue;
+  opacity: 1;
 }
 
 .photo-grid .card:hover {
   box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em,
     rgba(49, 60, 81, 0.08) 0px 0.175em 0.5em;
-  transform: translateY(-3px) scale(1.1);
+  transform: translateY(-3px) scale(1.05);
   cursor: pointer;
 }
 
