@@ -1,8 +1,5 @@
 # WADD - Mid Project
 
-## 
-
-
 # Requirement
 ## What Features and Contents?
 The webpage should able to deliver the blog articles of mine and some productivity features. This requires use of local storage.
@@ -13,47 +10,75 @@ The webpage should able to deliver the blog articles of mine and some productivi
 -   [x] In-App Navigation
 
 #### Contents
--   [ ] Profile Picture
--   [ ] Introduction of myself
--   [ ] Contacts
--   [ ] resume
--   [ ] My blog posts - Markdown?
+-   [x] Profile Picture
+-   [x] Introduction of myself
+-   [x] Contacts (Social Network)
+-   [x] resume (or portfolio?)
+-   [x] My blog posts - Markdown?
 
 #### Productivity    
--   [ ] Task Management
+-   [x] Task Management
 
 #### Misc
--   [ ] Responsive web & Adapt to different viewport
--   [ ] Animation
--   [ ] Grid
+-   [x] Responsive web & Adapt to different viewport
+-   [x] Animation
+-   [x] Grid
+
+## Wireframe of the website
+
+![image info](./img/wireframe.png)
 
 # Design Logics
-어떤 구조로 웹페이지를 만들 것인가?
-    -   프론트엔드 단에서 웹페이지를 구성할때 크게 세가지 방식으로 디자인할 수 있다. 정적 페이지, 동적 페이지, 그리고 SPA
-    -   [[SPA]]는 SIngle Page Application이라는 뜻으로, 한 html 페이지에서만 작동하는 웹페이지, 혹은 웹 어플리케이션이다. 한 html에서 모든 콘텐츠를 보여준다는 것은 반대로 다른 페이지를 load할 필요가 없다는 것이다. 서버와 데이터를 주고 받을 필요가 있을때는 전체 페이지가 아닌 데이터만 주고받는다.
-        -   특히 웹사이트가 하나의 프로덕트를 다루고 있다면, SPA만큼 이를 컨텐츠로서 잘 전달할 수 있는 것은 없을 것이다. 반대로 포커스를 해야하는 여러 프로덕트들이 있다면, multi-page application이 이를 분산해 전달하며 각각의 제품에 포커싱하기 더 좋을 것이다.
-        -   대표적인 SPA로 Gmail, Google Maps, Facebook, Trello 등이 있다.
-        -   장점:: 콘텐츠를 화려하게 보여줄 수 있으며, 한 번에 미리 모든 콘텐츠를 로드해두기 때문에 유저가 navigating 하기에 편하다. Logic의 많은 부분을 서버가 아닌 웹브라우저가 하기에 트래픽이 상대적으로 적게 발생하는 기능/컨텐츠의 경우 속도가 빠르다. 또한 모바일 앱으로 이행하기에 편하다.
-        -   단점:: SEO에 빈약한 모습을 보여주며, cross-site scripting등 보안과 관련해서는 덜 안전하다.
-        -   SPA를 만드는데 필요한 기술들:
-            -   [[AJAX]]는 사용자가 눈치채지 못하는 사이에 서버와 데이터를 주고받게 한며, 이 데이터는 필요할때 re-render한다.
-            -   SPA의 벡엔드 로직을 위해 node.js, PHP와 관련 프레임워크를 많이 사용한다.
-            -   DB로는 MySQL, MongoDB, 혹은 원하는 기술을 사용해도 좋다.
-        -   What is the **workflow to follow for building** \[\[SPA\]\]?
-            1.  list down the feature and functions you need in your web app
-                -   어떤 기능을 넣을 것인가? 웹사이트가 graphics 중심인가 contents 중심인가? 아니면 둘 다 초점을 맞추나? 그럴 경우 어떻게 적절하게 그래픽과 컨텐츠를 배치할 것인가?
-            2.  Choose which stack to build the website
-            3.  Navigatable vs Internal State
-                -   ![](https://blog.pshrmn.com/static/img/how-single-page-applications-work/url-parts.png)
-                -   > Only three of the location object’s properties are important for an SPA: pathname, hash, and search (commonly called a query string)
-                -   > Single-page application generally rely on a router. Routers are made up of routes, which describe the location that they should match. These can be static (/about) or dynamic (/album/:id, where the value of :id can be any number of possibilities) paths. The [path-to-regexp](https://github.com/pillarjs/path-to-regexp) package is a very popular solution for creating these paths.
+## How am I going to build - SPA
+SPA means Single Page Application, which refers to the web page or application that performs all the front-end logic in one html page. This means that there is no redirection occurs to show the content because the client fetches all the necessary data at the first request. When the client need additional data to update the components or content on the view, it just request json files to the server and update the view using JavaScript.
+- Especially, if a website deals with a single product, nothing can deliver it as well as SPA. Conversely, if there are multiple products that need to be focused, a multi-page application distributes them and it will be better to focus on each product.
+- The examples of SPAs include Gmail, Google Maps, Facebook, and Trello.
+- Pros:: Content can be displayed colorfully, and it is convenient for users to navigate because all content is loaded in advance at once. Because a web browser does a lot of logic, not a server, the speed of the function/content that generates relatively little traffic, is fast. It is also easy to make transition to a mobile app.
+- Cons:: Shows poor SEO ,and is less secure when it comes to security, such as cross-site scripting.
+### Skills required to create an SPA:
+ - [AJAX] allows the user to exchange data with the server without noticing it, and this data is re-rendered when necessary. In this project, I will use `fetch()` function of JS.
+ - Node.js, PHP and related frameworks are used a lot for SPA backend logic. However, this project doesn't include server-side rendering.
+ - For DB, you can use MySQL, MongoDB, or any technology you want.
+## Stacks and Dependency
+1. HTML
+2. CSS
+	1. Font Awesome
+3. JS
+	1. Marked - library to render markdown file/script
+4. Miscellaneous
+	1. I used Github Pages to host the page. For hosting the SPA application in Github, I referenced https://github.com/rafgraph/spa-github-pages.
 
+## Designs
+-   **HTML**
+	-   DOM structure is based on the wireframe, where the vertical nav is located at the left side of the webpage.
+-   **CSS**
+	-   Using CSS Selector, all DOM elements except the main page(ReadMe) are hide as default.
+	-   **CSS Selector + JS** can modify the `display:none` to `display:block`
+-   **JS**
+    -   When user clicks a link to a different page of the website, JS performs a logic to modify the contents on viewport. Thus, there are no acutal routing happening.
+-   Others
+	-   The Articles and Travel Note page display their content using `Grid`. 
+	
+## Logs & What I've Learned
 
-# Logs
+2021-02-18
+-   CSS position -> Decides on how to move the element based on the parents or window's position.
+-   In the case of `display: block`, line breaks occur before and after the element. It can be seen as the exact opposite.
+-   'display: Grid' is similar to Flex, but it is an extended concept. If Flex is one-dimensional, grid is two-dimensional.
+
 2021-02-19
-- Sidebar 기초 완성
-- 어떻게 JS 코드를 그리드 구조와 매칭시킬 것인가?
-	- 우선 그리드에 컨텐츠가 들어갈 영역마다 특정한 id을 지정한다.
-		- 
+- Sidebar version 1 is finished
+
+2021-02-20
+- Modifying Article Page:
+	-  All the cards in the grid is using the Unsplash API to fetch random image related to the topic, but the fetched images for each card (article) is same. 
+	-  This is because the browser request the fetch in a batch at once. To fix this issue, I included pseudo-random number in the fetching address. i.e. `'https://source.unsplash.com/random?${article.about}?sig=${rand}'`
+- Sidebar Issue addressed
+	- part of the text (`<a>`) highlighted when the sidebar is hovered.
+		- <a> was set to be have background color of #fff on hovering. It is disabled now
+	- picture card being covers the sidebar when both objects are being hovered.
+		- Added z-index to the Sidebar to have higher priority in the viewport.
+	- Changed the Background color of the `body` with the css color setting from https://uigradients.com/#eXpresso.
+
 
 		
