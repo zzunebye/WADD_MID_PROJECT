@@ -31,9 +31,9 @@ PAGES.articles.fetched;
 
 
 // Some other page
-PAGES.toll = {};
-PAGES.toll.page = document.querySelector("#toll");
-PAGES.toll.content = document.querySelector("#tollstations");
+PAGES.portfolio = {};
+PAGES.portfolio.page = document.querySelector("#portfolio");
+PAGES.portfolio.content = document.querySelector("#tollstations");
 
 PAGES.travel = {};
 PAGES.travel.page = document.querySelector("#travel");;
@@ -279,7 +279,7 @@ pageFunctions.tasks = function () {
 
     // }
     console.log(localStorage.getItem(value));
-    const newTask = createNewTask(value,localStorage.getItem(value));
+    const newTask = createNewTask(value, localStorage.getItem(value));
     if (localStorage.getItem(value) == 0) {
       incompleteTasksHolder.innerHTML += newTask;
 
@@ -429,12 +429,12 @@ checkBoxHandler = (obj) => {
 
 /* -------------------------------- practice -------------------------------- */
 
-pageFunctions.toll = function () {
-  fetch("https://hotell.difi.no/api/json/bergen/dokart")
+pageFunctions.portfolio = function () {
+  fetch("./src/projects.json")
     .then(response => response.json())
     .then(json => {
       console.log(json);
-      PAGES.toll.content.innerHTML = json.entries.reduce((acc, toll) => {
+      PAGES.portfolio.content.innerHTML = json.reduce((acc, toll) => {
         return (acc += tollInfo(toll));
       }, "");
     });
@@ -443,9 +443,13 @@ pageFunctions.toll = function () {
 function tollInfo(toll) { // HTML을 생성하는 함수
   return `
   <div class="toll">
-  <h2>${toll.navn}</h2>
-  <h3>Takst stor bil: ${toll.takst_stor_bil}</h3>
-  <h3>Takst liten bil: ${toll.takst_liten_bil}</h3>
+  <h2>${toll.title}</h2>
+  <h4 id="">About: ${toll.about}</h4>
+  <div id="p_a">
+    <p>${toll.text}</p>
+    <a href="https://zzunebye.github.io/WADD_MID_PROJECT/#articles">Link</a>
+    
+  </div>
   </div>
   `;
 }

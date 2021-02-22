@@ -1,0 +1,57 @@
+[{
+    "id": "1",
+    "title": "Kaggle Titanic Data Project",
+    "createdAt": "2020-04-29T09:50:31.617Z",
+    "name": "Mittie Cartwright",
+    "about": "Machine Leraning",
+    "text": "article1.html"
+},
+{
+    "id": "2",
+    "title": "Breaking Bad API & React",
+    "createdAt": "2020-05-12T09:53:39.074Z",
+    "name": "Earlene Hane",
+    "about": "React, AJAX",
+    "text": ""
+},
+{
+    "id": "3",
+    "title": "Single Page App Homepage - using vanilla JS",
+    "createdAt": "2020-11-13T21:15:32.955Z",
+    "name": "Geoffrey O'Kon",
+    "about": "JS, CSS, Grid, Web",
+    "text": "text 3"
+},
+{
+    "id": "4",
+    "title": "AI Course Music genre Classification using 1DCNN and 2DCNN",
+    "createdAt": "2020-06-05T00:05:21.912Z",
+    "name": "Mia Runolfsson",
+    "about": "react, programming",
+    "text": "text 4"
+},
+{
+    "id": "5",
+    "createdAt": "2020-06-13T17:59:51.689Z",
+    "name": "Mrs. Julia Hilpert",
+    "about": "OS, operating system",
+    "text": "text 5",
+    "title": "OS is an interface between hardware and user apps"
+},
+{
+    "id": "6",
+    "createdAt": "2021-01-31T00:24:59.183Z",
+    "name": "Eudora Weber",
+    "about": "note taking",
+    "text": "text 6",
+    "title": "Write your idea into a note"
+},
+{
+    "id": "7",
+    "createdAt": "2020-08-21T01:09:53.904Z",
+    "name": "Mariane Klein",
+    "about": "Deep Learning, Backpropagation",
+    "text": "text 7",
+    "title": "Deep Learning - Backpropagation"
+}
+]

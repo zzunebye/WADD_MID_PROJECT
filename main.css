@@ -259,7 +259,7 @@ body::-webkit-scrollbar-thumb {
   top: 40%;
 }
 
-.wrapper .sidebar:hover .social_media  {
+.wrapper .sidebar:hover .social_media {
   display: flex;
 }
 
@@ -304,8 +304,30 @@ body::-webkit-scrollbar-thumb {
 
 .toll:hover {
   transition-duration: 0.5s;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
+
+.toll p {
+  font-weight: 100;
+
+}
+
+.toll #p_a {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  justify-content:space-between;
+}
+
+.toll #p_a p {
+  margin: 0.3em 0;
+}
+
+.toll #p_a a {
+  color: beige;
+}
+
+
 
 /* ------------------------------- photo grids ------------------------------ */
 
