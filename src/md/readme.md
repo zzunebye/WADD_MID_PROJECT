@@ -1,5 +1,22 @@
 # WADD - Mid Project
 
+# Features of the Assignment Page
+
+### General
+
+
+### Article page
+
+### Travel Page
+
+### Tasks page
+
+### Portfolio page
+
+### About page
+
+---
+
 # Requirement
 ## What Features and Contents?
 The webpage should able to deliver the blog articles of mine and some productivity features. This requires use of local storage.

@@ -28,13 +28,13 @@ Dependency: FontAwesome, Marked
     // When the single page app is loaded further down in this file,
     // the correct url will be waiting in the browser's history for
     // the single page app to route accordingly.
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
           return s.replace(/~and~/g, '&')
         }).join('?');
         window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
+          l.pathname.slice(0, -1) + decoded + l.hash
         );
       }
     }(window.location))
@@ -42,7 +42,7 @@ Dependency: FontAwesome, Marked
   <!-- End Single Page Apps for GitHub Pages -->
   <script src="https://kit.fontawesome.com/4ad9fc3082.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  
+
 
 </head>
 
@@ -51,12 +51,17 @@ Dependency: FontAwesome, Marked
 
   <div class="wrapper">
 
+    <div class="loader-wrapper page">
+      <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+
+
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 사이드바 영역                                 -->
     <!-- ----------------------------------------------------------------------- -->
 
     <div class="sidebar">
-      <div class="logo"> <span class="link-text logo-text">zzunebye</span><svg aria-hidden="true" focusable="false"
+      <div class="logo"> <span class="logo-text">zzunebye</span><svg aria-hidden="true" focusable="false"
           data-prefix="fad" data-icon="angle-double-right" role="img" xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 448 512" class="svg-inline--fa fa-angle-double-right fa-w-14 fa-5x">
           <g class="fa-group">
@@ -69,17 +74,17 @@ Dependency: FontAwesome, Marked
           </g>
         </svg></div>
       <ul>
-        <li><a href="#readme"><i class="fab fa-markdown"></i><span class="link-text">ReadMe</span></a></li>
-        <li><a href="#articles"><i class="fab fa-pied-piper-square"></i><span class="link-text">Articles</span></a></li>
-        <li><a href="#travel"><i class="fas fa-globe-europe"></i><span class="link-text">Travel</span></a></li>
-        <li><a href="#tasks"><i class="fas fa-tasks"></i><span class="link-text">Tasks</span></a></li>
-        <li><a href="#portfolio"><i class="fas fa-user"></i><span class="link-text">Portfolio</span></a></li>
-        <li><a href="#about"><i class="fas fa-address-card"></i><span class="link-text">About</span></a></li>
+        <li><a href="#readme" class="link"><i class="fab fa-markdown"></i><span class="link-text">ReadMe</span></a></li>
+        <li><a href="#articles" class="link"><i class="fab fa-pied-piper-square"></i><span class="link-text">Articles</span></a></li>
+        <li><a href="#travel" class="link" onclick="menuClicked(this.id)"><i class="fas fa-globe-europe"></i><span class="link-text">Travel</span></a></li>
+        <li><a href="#tasks" class="link" onclick="menuClicked(this.id)"><i class="fas fa-tasks"></i><span class="link-text">Tasks</span></a></li>
+        <li><a href="#portfolio" class="link" onclick="menuClicked()"><i class="fas fa-user"></i><span class="link-text">Portfolio</span></a></li>
+        <li><a href="#about" class="link" onclick="menuClicked(this.id)"><i class="fas fa-address-card"></i><span class="link-text">About</span></a></li>
       </ul>
       <div class="social_media">
         <a href="https://www.facebook.com/june6young"><i class="fab fa-facebook-f"></i></a>
         <a href="https://www.linkedin.com/in/jun-young-bang-429328132/"><i class="fab fa-linkedin"></i></a>
-        <a href="#https://www.instagram.com/zzunebye/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/zzunebye/"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
 
@@ -89,7 +94,7 @@ Dependency: FontAwesome, Marked
 
     <div class="main_content">
       <!-- Front Page -->
-      
+
       <div id="readme" class="page active">
         <div id="readme-page">
           <article id="readme-wrapper">
@@ -98,8 +103,8 @@ Dependency: FontAwesome, Marked
           </article>
         </div>
       </div>
-      
-      <div id="articles" class="page">
+
+      <div id="articleList" class="page">
         <h1 id="articles-title">Blog Articles</h1>
         <div class="photo-grid" id="grid-blog">
         </div>
@@ -129,8 +134,8 @@ Dependency: FontAwesome, Marked
         </div>
 
       </div>
-      
-      
+
+
 
       <!-- ----------------------------- Travel Page ----------------------------- -->
       <div id="travel" class="page">
@@ -163,7 +168,7 @@ Dependency: FontAwesome, Marked
 
       <!-- ------------------------------ Toll Page ------------------------------ -->
 
-      <div id="portfolio" class="page">
+      <div id="portfolioPage" class="page">
         <h1>Portfolio</h1>
         <div id="tollStations"></div>
       </div>
@@ -172,39 +177,67 @@ Dependency: FontAwesome, Marked
 
       <div id="about" class="page">
         <div class="backwards">
-          <a href="#main">&lt; Tilbake til forsiden</a>
+          <a href="#main" style="color:aliceblue">&lt; Portal to 404 Page🤘</a>
         </div>
         <h1>About Me</h1>
         <div id="profile">
           <div id="pic-name">
             <img src="./img/profile.png" alt="profile img">
-            <span>Hi! My name is June, 4th year student of Computing Department of PolyU of Hong Kong. I am interested in Web Development, and looking for an internship. Feel free to contact me through Social Networt!</span>
+            <span>Hi! My name is June, 4th year student of Computing Department of PolyU of Hong Kong. I am interested
+              in Web Development, and looking for an internship. Feel free to contact me through Social Networt!</span>
           </div>
           <div id="biography">
             <h2>Bio!</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate consectetur cumque earum aut rerum voluptatum dolores repellendus illum, deserunt quibusdam officia. Exercitationem rem inventore dolore voluptates? Eius esse voluptatum dolores.
-              Eligendi suscipit veritatis pariatur laborum sed voluptate itaque accusamus rerum inventore laboriosam corrupti temporibus, soluta earum sit exercitationem illum! Magnam dolore accusamus nisi sequi veritatis labore accusantium explicabo dicta rerum?
-              Excepturi, dolore illo. Iusto optio nemo aut, necessitatibus facere nisi odio animi quidem mollitia vero? Molestiae sapiente minima exercitationem corrupti unde necessitatibus aspernatur tempore provident, ipsam quisquam rerum esse vel.
-              Quas quae vitae nesciunt. Deleniti qui ipsa, quia enim, rem necessitatibus voluptas neque, obcaecati ab dolor consectetur corporis quis. Dicta ad deleniti veritatis possimus aperiam rem qui natus laborum facilis.
-              Saepe ducimus perferendis, itaque nemo minima nihil! Rem consequuntur, temporibus dolor dolore eaque doloribus obcaecati odit illo quibusdam quod suscipit maiores atque alias quae voluptates rerum perferendis aperiam fuga magnam?
-              Accusantium laudantium dolor soluta culpa quisquam suscipit placeat doloribus. Beatae voluptas atque molestias corporis ipsam corrupti facilis tenetur possimus, placeat quos nemo expedita harum eveniet amet, nam dolor, quidem animi!
-              Accusantium cupiditate ullam, vitae saepe in id assumenda quibusdam hic a. Nemo, accusamus illum officia totam cumque porro, earum maxime cupiditate est dicta dolore eligendi in expedita quod voluptatem accusantium?
-              Tenetur eveniet sunt soluta omnis asperiores nostrum quam sapiente veritatis, nemo exercitationem reiciendis nulla ea ad laudantium animi nobis itaque rerum aut aperiam dignissimos minus! Non sapiente sunt itaque nam!
-              Doloribus explicabo praesentium corporis quibusdam saepe omnis, delectus nobis aliquam aliquid pariatur atque, minima optio fugit consequatur enim? Perspiciatis, consequuntur voluptate. Enim odit eligendi velit optio, ex deleniti aliquam dolor.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate consectetur cumque earum aut rerum
+              voluptatum dolores repellendus illum, deserunt quibusdam officia. Exercitationem rem inventore dolore
+              voluptates? Eius esse voluptatum dolores.
+              Eligendi suscipit veritatis pariatur laborum sed voluptate itaque accusamus rerum inventore laboriosam
+              corrupti temporibus, soluta earum sit exercitationem illum! Magnam dolore accusamus nisi sequi veritatis
+              labore accusantium explicabo dicta rerum?
+              Excepturi, dolore illo. Iusto optio nemo aut, necessitatibus facere nisi odio animi quidem mollitia vero?
+              Molestiae sapiente minima exercitationem corrupti unde necessitatibus aspernatur tempore provident, ipsam
+              quisquam rerum esse vel.
+              Quas quae vitae nesciunt. Deleniti qui ipsa, quia enim, rem necessitatibus voluptas neque, obcaecati ab
+              dolor consectetur corporis quis. Dicta ad deleniti veritatis possimus aperiam rem qui natus laborum
+              facilis.
+              Saepe ducimus perferendis, itaque nemo minima nihil! Rem consequuntur, temporibus dolor dolore eaque
+              doloribus obcaecati odit illo quibusdam quod suscipit maiores atque alias quae voluptates rerum
+              perferendis aperiam fuga magnam?
+              Accusantium laudantium dolor soluta culpa quisquam suscipit placeat doloribus. Beatae voluptas atque
+              molestias corporis ipsam corrupti facilis tenetur possimus, placeat quos nemo expedita harum eveniet amet,
+              nam dolor, quidem animi!
+              Accusantium cupiditate ullam, vitae saepe in id assumenda quibusdam hic a. Nemo, accusamus illum officia
+              totam cumque porro, earum maxime cupiditate est dicta dolore eligendi in expedita quod voluptatem
+              accusantium?
+              Tenetur eveniet sunt soluta omnis asperiores nostrum quam sapiente veritatis, nemo exercitationem
+              reiciendis nulla ea ad laudantium animi nobis itaque rerum aut aperiam dignissimos minus! Non sapiente
+              sunt itaque nam!
+              Doloribus explicabo praesentium corporis quibusdam saepe omnis, delectus nobis aliquam aliquid pariatur
+              atque, minima optio fugit consequatur enim? Perspiciatis, consequuntur voluptate. Enim odit eligendi velit
+              optio, ex deleniti aliquam dolor.
             </p>
-            
+
             <p>
-              Quasi ipsum reiciendis cupiditate sed, aperiam tempora voluptate quo inventore nostrum libero fugit facere in, nam omnis voluptatibus natus consequuntur vel ea! Facere vel sunt omnis excepturi consectetur, ipsa voluptatem.
-              Maxime veritatis qui possimus expedita, voluptatibus nemo quam id quod corporis atque deserunt et eum aut magni cupiditate nisi? Blanditiis nemo, culpa dolores magni labore iure provident harum repellat exercitationem!
-              Totam odit cupiditate vitae quibusdam, a ad, quo reprehenderit quaerat, incidunt modi nostrum. Rem ullam quas facilis iure, architecto dolores molestiae animi, veniam beatae eligendi, officiis possimus laborum atque pariatur.
-              Porro dolor aut consectetur possimus eius quos minus. Eveniet saepe ullam magni molestiae quidem quod, accusamus facilis cum omnis cupiditate aperiam libero laboriosam, quae harum itaque velit dolores mollitia dolore!
-              Quae ullam neque iusto, iste ipsum quod officia aperiam repellat sequi eos tempora tenetur. Porro sint nobis iste temporibus adipisci provident qui illo consequatur?
+              Quasi ipsum reiciendis cupiditate sed, aperiam tempora voluptate quo inventore nostrum libero fugit facere
+              in, nam omnis voluptatibus natus consequuntur vel ea! Facere vel sunt omnis excepturi consectetur, ipsa
+              voluptatem.
+              Maxime veritatis qui possimus expedita, voluptatibus nemo quam id quod corporis atque deserunt et eum aut
+              magni cupiditate nisi? Blanditiis nemo, culpa dolores magni labore iure provident harum repellat
+              exercitationem!
+              Totam odit cupiditate vitae quibusdam, a ad, quo reprehenderit quaerat, incidunt modi nostrum. Rem ullam
+              quas facilis iure, architecto dolores molestiae animi, veniam beatae eligendi, officiis possimus laborum
+              atque pariatur.
+              Porro dolor aut consectetur possimus eius quos minus. Eveniet saepe ullam magni molestiae quidem quod,
+              accusamus facilis cum omnis cupiditate aperiam libero laboriosam, quae harum itaque velit dolores mollitia
+              dolore!
+              Quae ullam neque iusto, iste ipsum quod officia aperiam repellat sequi eos tempora tenetur. Porro sint
+              nobis iste temporibus adipisci provident qui illo consequatur?
             </p>
           </div>
-        
+
         </div>
-        
+
       </div>
 
       <!-- --------------------------- 404 ERROR page ---------------------------- -->

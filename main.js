@@ -8,8 +8,6 @@
 
 // import marked from "marked";
 
-
-
 /* -------------------------------------------------------------------------- */
 /*                         define an object structure                         */
 /* -------------------------------------------------------------------------- */
@@ -19,6 +17,8 @@
 // 여기서 각 오브젝트 프로퍼티는 해당 콘텐츠를 insert할 공간(요소)의 id를 담는다.
 PAGES = {};
 
+PAGES.loading = {};
+PAGES.loading.page = document.querySelector(".loader");
 
 // Main page - Readme
 PAGES.readme = {};
@@ -29,17 +29,18 @@ PAGES.readme.article = document.querySelector("#readme-content");
 
 // Main page (Grid of articles)
 PAGES.articles = {};
-PAGES.articles.page = document.querySelector("#articles");
+PAGES.articles.page = document.querySelector("#articleList");
 PAGES.articles.grid = document.querySelector("#grid-blog");
 PAGES.articles.content = document.querySelector("#grid-content-page");
 PAGES.articles.title = document.querySelector("#article-head");
 PAGES.articles.article = document.querySelector("#article-content");
 PAGES.articles.cards = document.getElementsByClassName("card");
 PAGES.articles.fetched;
+PAGES.articles.images = document.querySelectorAll('img') ;
 
 // Some other page
 PAGES.portfolio = {};
-PAGES.portfolio.page = document.querySelector("#portfolio");
+PAGES.portfolio.page = document.querySelector("#portfolioPage");
 PAGES.portfolio.content = document.querySelector("#tollstations");
 
 PAGES.travel = {};
@@ -104,6 +105,7 @@ pageFunctions.readme = function () {
     // There was an error
     console.warn('Something went wrong.', err);
   });
+  // hideLoader();
 }
 
 pageFunctions.articles = function () {
@@ -114,14 +116,16 @@ pageFunctions.articles = function () {
     .then(response => response.json())
     .then(json => {
       console.log(json);
+      
       PAGES.articles.fetched = json;
       PAGES.articles.grid.innerHTML = json.reduce((acc, articles) => {
         return (acc += createArticles(articles));
       }, "");
       // const article_list = json.map((article) => {
-      //   return (PAGES.articles.grid.appendChild(createArticles(articles)));
-      // }, "");
-      // PAGES.articles.grid.appendChild(article_list)
+        //   return (PAGES.articles.grid.appendChild(createArticles(articles)));
+        // }, "");
+        // PAGES.articles.grid.appendChild(article_list)
+        // hideLoader();
     });
 }
 
@@ -164,6 +168,8 @@ function backToArticles() {
   PAGES.articles.article.classList.add("blur");
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
+  // window.scrollTo(0,0);
+
 }
 
 function open_article(id) {
@@ -192,29 +198,6 @@ function open_article(id) {
     console.warn('Something went wrong.', err);
   });
 
-
-
-
-  // const url = `https://602f9901a1e9d20017af097d.mockapi.io/WADD/v1/articles/${id}`
-  // fetch(url)
-  // .then(response => response.json())
-  // .then(json => {
-  //     // console.log(PAGES.articles.fetched[id-1].title);
-  //     // console.log(json)
-  //     // PAGES.articles.content.classList.add("active");
-  //     PAGES.articles.title.innerHTML = `${json.title}`
-  //     PAGES.articles.article.innerHTML = `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur faucibus nulla ut ante tincidunt, vel cursus dolor luctus. Etiam semper, turpis non tristique varius, velit odio feugiat nisi, ut dignissim ante ligula vitae urna. Sed id cursus libero. Vivamus eget risus commodo, volutpat nisi eget, varius mauris. Pellentesque finibus dictum nunc, sit amet ultricies turpis mattis congue. Maecenas id convallis magna, sit amet tincidunt est. Sed a risus vehicula, sodales arcu euismod, porta neque. Aliquam vulputate, erat quis finibus sagittis, tellus augue molestie metus, sed auctor leo nulla vel libero. Nunc ante arcu, congue non nibh ac, gravida pellentesque turpis. Praesent velit magna, porttitor eu gravida non, bibendum nec lectus. Suspendisse feugiat ullamcorper risus, ac tempor lacus rhoncus sit amet. Nunc vel suscipit erat. Maecenas condimentum tempor erat eget dignissim. Nunc vehicula, tortor eu sollicitudin commodo, diam ligula hendrerit neque, sit amet hendrerit mauris magna nec enim. In hac habitasse platea dictumst. Sed nibh nulla, euismod vel vestibulum a, commodo non diam.
-
-  //   Vestibulum sit amet lacus at enim scelerisque pharetra eget in nunc. Etiam in porttitor arcu. Praesent eu hendrerit turpis. Sed semper diam lectus, eleifend rhoncus tellus condimentum ultrices. Morbi aliquam velit tristique, gravida nisi ut, cursus mauris. Aenean congue, lacus commodo pulvinar convallis, ligula dolor suscipit orci, in iaculis arcu eros viverra tortor. Duis nec lobortis metus, vel elementum sem. Donec nec magna id augue tincidunt congue ut tempus augue. Etiam in aliquam neque.
-
-  //   Etiam tempor tristique volutpat. Aenean interdum iaculis mauris et egestas. Vivamus libero sem, faucibus in hendrerit nec, finibus pulvinar erat. In at felis hendrerit magna fringilla scelerisque. Suspendisse potenti. Sed pretium, est eu dignissim fermentum, risus nunc maximus lacus, id accumsan massa risus eget lorem. Nulla vel ex sit amet eros dignissim pellentesque eget ac lacus. Phasellus lorem leo, mollis nec odio aliquet, commodo dictum turpis. Curabitur pellentesque urna non quam hendrerit, ac pulvinar metus varius. Maecenas nec nisi semper diam tempor tincidunt. Aliquam viverra finibus sem, eu dictum velit ultrices a. Mauris sit amet ante porttitor, tempus nulla in, consectetur nisi. Proin suscipit hendrerit quam, vel ullamcorper mauris facilisis non. In eu mollis odio.
-
-  //   Nullam sem lorem, pharetra id nisi ornare, faucibus scelerisque nisl. Suspendisse eu pellentesque lectus, et tincidunt odio. In porttitor vulputate turpis quis fermentum. Nulla mollis vehicula arcu at dapibus. Nam non felis eget mi blandit pellentesque. Sed vel arcu ut eros maximus aliquam. Praesent ac scelerisque magna, ac vehicula lectus. Fusce bibendum, lectus et posuere sollicitudin, turpis dui euismod ante, id dictum urna nisi sit amet ligula. Sed a tortor ex. Pellentesque sagittis tincidunt orci, nec posuere felis faucibus finibus. Maecenas vitae urna dapibus, dapibus est eu, varius velit. Praesent vel porta erat, eu laoreet massa. Duis rhoncus tincidunt suscipit. Aenean pretium, nibh ut aliquam maximus, nulla tellus scelerisque est, a facilisis ipsum sem ac est.
-
-  //   Praesent sit amet nisl eu lacus hendrerit vestibulum at at neque. Nulla vitae tristique metus. Mauris efficitur est ac erat elementum consequat. Ut molestie libero ut ultricies tempor. Sed risus dolor, varius quis ex non, cursus egestas nibh. Aliquam dapibus, eros vitae dapibus sodales, dui libero accumsan nibh, ultrices pharetra urna enim eu lacus. Phasellus euismod, turpis a consectetur varius, velit massa finibus purus, eu malesuada quam ante in augue. Sed non convallis odio. In hac habitasse platea dictumst.
-  //   </p>`
-  //   });
-
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
@@ -231,6 +214,7 @@ pageFunctions.travel = function () {
       PAGES.travel.cards.innerHTML = json.reduce((acc, place) => {
         return (acc += createTravelCard(place));
       }, "");
+      // hideLoader();
     });
 }
 
@@ -280,10 +264,9 @@ pageFunctions.tasks = function () {
     console.log(values[keys[i]]);
     (values[keys[i]] ? count_done++ : count_undone++)
   }
-  console.log(count_done);
-  console.log(count_undone);
-
-  console.log(values);
+  // console.log(count_done);
+  // console.log(count_undone);
+  // console.log(values);
 
   for (const value in values) {
     // if (Object.hasOwnProperty.call(object, value)) {
@@ -300,7 +283,7 @@ pageFunctions.tasks = function () {
 
     }
   }
-
+  // hideLoader();
 }
 
 
@@ -472,10 +455,24 @@ function tollInfo(toll) { // HTML을 생성하는 함수
 
 var path;
 
+function unhideLoader() {
+  document.querySelector('.loader-wrapper').classList.remove('blur')
+  // document.querySelector('.loader-wrapper').style.zIndex = 5
+}
+
+function hideLoader() {
+  document.querySelector('.loader-wrapper').classList.add('blur')
+  document.querySelector('.loader-wrapper').style.zIndex = 0
+}
+
+function name(params) {
+  
+}
+
+
 // Navigation
 function navigate() {
-  // Get the url path in a easy (The URL hash is easily accessible through location.hash)
-  // => 위에서 선언한 path에 location으로 부터 파싱한 주소를 담는다.
+
   path = location.hash
     .substr(1)
     .toLowerCase()
@@ -505,17 +502,29 @@ function navigate() {
   if (pageFunctions.hasOwnProperty(currentPage)) {
     pageFunctions[currentPage]();
   }
+  hideLoader();
+
 }
 
 /* -------------------------------------------------------------------------- */
 /*                               Main Execution                               */
 /* -------------------------------------------------------------------------- */
 
+
+window.setTimeout(function () {
+  hideLoader()
+}, 1500);
+
 // First time loading the page
 navigate();
 
 // By using the function window.onhashchange, we can detect when the hash in the URL changes. Combining this with anchors, and we have a way detect when we should changing the content of the SPA.
-window.onhashchange = navigate;
+window.addEventListener("hashchange", function () {
+  // unhideLoader();
+  navigate();
+});
+window.onbeforeunload = function() { window.scrollTo(0,0); }
+
 
 // 페이지가 로딩될때 생성된 PAGES를 출력한다.
 console.log(PAGES);
