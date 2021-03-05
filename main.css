@@ -9,7 +9,6 @@ position -> 기존 위치를 바탕으로 무엇을 기준으로 해당 엘리�
 :root {
   font-size: 13px;
   font-weight: 400;
-
   --transition-speed: 600ms;
 }
 
@@ -109,7 +108,7 @@ body::-webkit-scrollbar-thumb {
   /* padding: 1em 0; */
   /* top: 10px; */
   background: #4b4276;
-  transition: width 600ms ease;
+  transition: all 600ms ease;
   overflow: scroll;
   z-index: 5;
   top: 0;
@@ -181,13 +180,6 @@ body::-webkit-scrollbar-thumb {
   margin: 0 0.5rem;
 }
 
-.wrapper .sidebar ul{
-  /* align-items:center; 
-  justify-items: center;
-  align-self: center;
-  justify-self: center; */
-  /* text-align: center; */
-}
 .wrapper .sidebar ul li{
   align-items:center; 
   justify-items: center;
@@ -295,6 +287,94 @@ body::-webkit-scrollbar-thumb {
   display: flex;
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+    display: flex;
+    position: relative;
+    /* flex-direction: row; */
+  }
+  
+  .wrapper .sidebar {
+    position: fixed;
+    float: left;
+    padding: 0em 0; 
+    top: 10px;
+    overflow: hidden;
+    top: 0;
+    width: 60px;
+    padding: 30px 0;
+    height: 60px;
+    border-radius: 30px;
+    margin: 3vh 2vh;
+  transition: all 600ms ease;
+  }
+
+  .wrapper .sidebar:hover {
+    overflow:scroll;
+    border-radius: 10px;
+    width: 13rem;
+    padding: 30px 0;
+    height: 55vh;
+    margin: 3vh 3vh;
+
+  }
+  .wrapper .sidebar .logo {
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    position:absolute; 
+    top: 25%;
+    left: 10%;
+  }
+  .wrapper .sidebar:hover .logo {
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    /* display:block; 
+    top: 0%;
+    left: 0%; */
+    position:relative; 
+    top: 0%;
+    left: -30%;
+  }
+
+  .wrapper .sidebar.logo svg {
+    /* top:1vw; */
+    transform: rotate(-180deg);
+  }
+
+  .wrapper .sidebar .logo-text {
+    display: inline;
+    position: absolute;
+    font-size: medium;
+    left: -999px;
+    transition: var(--transition-speed);
+  }
+
+  .wrapper .sidebar:hover .logo-text {
+    position: absolute;
+
+    display: none;
+    top:32px;
+    left: -5px;
+  }
+  
+  .wrapper .sidebar ul{
+    display: none;
+  }
+  .wrapper .sidebar:hover ul{
+    display:block;
+  }
+
+  .wrapper .sidebar .social_media {
+    display: none;
+    visibility: hidden;
+    transition: visibility 0.5s, opacity 0.3s linear;
+  }
+  .wrapper .sidebar:hover .social_media {
+    display: flex;
+    visibility: visible;
+  }
+}
+
 
 /* -------------------------------------------------------------------------- */
 /*                           Contents Area (general)                          */
@@ -302,9 +382,10 @@ body::-webkit-scrollbar-thumb {
 
 .wrapper .main_content {
   width: 100%;
-  margin-left: 7rem;
   padding: 1rem;
   margin: 1rem 1rem 1rem 7rem;
+  transition: all 0.3s linear;
+
 }
 
 .page {
@@ -320,6 +401,17 @@ body::-webkit-scrollbar-thumb {
   padding-bottom: 1rem;
   /* transition: all 0.3s linear; */
   /* transform:translate(0); */
+}
+
+@media (max-width: 768px) {
+  .wrapper .main_content {
+  padding: 1rem;
+  margin: 6rem 1rem 1rem 1rem;
+  transition: all 0.3s linear;
+
+  }
+
+
 }
 
 /* -------------------------------------------------------------------------- */
@@ -406,6 +498,7 @@ body::-webkit-scrollbar-thumb {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.8;
+  
 }
 
 .photo-grid .card span {
@@ -889,6 +982,29 @@ div.task-option label {
 #readme #readme-page #readme-head>* {
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+  #readme #readme-page {
+    padding: 1em 2em;
+    font-size: xx-small;
+    border-radius: 1em;
+    background: rgba(40, 120, 56, 0.3);
+  }
+  
+  #readme img {
+    /* width: 100%; */
+    height: 250px;
+    /* object-fit: cover; */
+    border-radius: 5px;
+  }
+  
+  #readme #readme-page #readme-head>* {
+    opacity: 1;
+  }
+
+
+}
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 Components                                 */
