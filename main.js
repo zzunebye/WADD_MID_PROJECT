@@ -219,7 +219,7 @@ pageFunctions.travel = function () {
 }
 
 function createTravelCard(location) {
-  return `<div class="travelcard">
+  return `<div class="travelcard travelcardAnimation">
     <div class="card-inner">
       <div class="card-front">
         <img src="https://source.unsplash.com/random?${location.place}" alt="" />
@@ -437,7 +437,7 @@ pageFunctions.portfolio = function () {
 
 function tollInfo(toll) { // HTML을 생성하는 함수
   return `
-  <div class="toll">
+  <div class="toll tollanimation">
   <h2>${toll.title}</h2>
   <h4 id="">About: ${toll.about}</h4>
   <div id="p_a">
@@ -448,6 +448,19 @@ function tollInfo(toll) { // HTML을 생성하는 함수
   </div>
   `;
 }
+
+
+function delayElems(item, index) {
+  console.log(item);
+  item.style.animationDelay = 0.31*(1+index) +'s'
+  // item.sheet.insertRule('# {color: darkseagreen}');
+}
+
+document.querySelectorAll("#tollStations.toll").forEach(delayElems)
+console.log(document.querySelectorAll("#tollStations.toll"));
+
+// document.querySelectorAll() fruits.forEach(myFunction);
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 Navigation                                 */

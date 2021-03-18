@@ -26,16 +26,21 @@ body {
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #3c1053, #ad5389);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #3c1053, #ad5389);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: linear-gradient(to top, #ff9a9e 0%, #453a94 100%);
+  /* background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%); */
+
+
+  /* background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%); */
+  /* background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%); */
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   margin: 0 auto;
   color: #fff;
   -webkit-font-smoothing: antialiased;
 }
-
+d
 body::-webkit-scrollbar {
-  width: 0.25rem;
+  width: 0.35rem;
 }
 
 body::-webkit-scrollbar-track {
@@ -58,7 +63,7 @@ body::-webkit-scrollbar-thumb {
   background-color: #242f3f;
   display:flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
   /* z-index: 4; */
 }
 .wrapper .loader {
@@ -107,8 +112,15 @@ body::-webkit-scrollbar-thumb {
   position: fixed;
   /* padding: 1em 0; */
   /* top: 10px; */
-  background: #4b4276;
+  /* background: #4b4276; */
   transition: all 600ms ease;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  /* background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); */
+  /* background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%); */
+  /* background-image: linear-gradient(to top, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);  transition: all 600ms ease; */
+  /* background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%); */
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
   overflow: scroll;
   z-index: 5;
   top: 0;
@@ -261,7 +273,7 @@ body::-webkit-scrollbar-thumb {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  display: block;
+  display: grid;
 }
 
 .wrapper .sidebar .social_media a {
@@ -410,31 +422,82 @@ body::-webkit-scrollbar-thumb {
   transition: all 0.3s linear;
 
   }
-
-
 }
 
 /* -------------------------------------------------------------------------- */
 /*                                    Pages                                   */
 /* -------------------------------------------------------------------------- */
 
+@keyframes tollincoming {
+  0% {
+    left: 1000px;
+  }
+  85% {
+    left: -20px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.tollanimation {
+  --delay: 0.15s;
+  animation-name: tollincoming;
+  /* transition: transform 2s forwards; */
+  animation-duration:1.4s;
+  animation-iteration-count:1;
+  /* animation-direction: alternate; */
+  animation-timing-function: ease-in;
+  /* animation-timing-function:ease-in-out; */
+  animation-fill-mode: forwards;
+}
+
+.tollanimation:nth-child(1) {
+  animation-delay: calc(var(--delay) * 1);
+}
+.tollanimation:nth-child(2) {
+  animation-delay: calc(var(--delay) * 2);
+}
+.tollanimation:nth-child(3) {
+  animation-delay: calc(var(--delay) * 3);
+}
+.tollanimation:nth-child(4) {
+  animation-delay: calc(var(--delay) * 4);
+}
+.tollanimation:nth-child(5) {
+  animation-delay: calc(var(--delay) * 5);
+}
+.tollanimation:nth-child(6) {
+  animation-delay: calc(var(--delay) * 6);
+}
+
 
 .toll {
+  left:1000px;
+  position:relative;
   border: 1px solid grey;
   box-shadow: 5px 5px grey;
   border-radius: 10px;
   margin: 30px 10px;  
   padding: 10px;
+  animation-name: tollincoming;
+  /* transition: transform 2s forwards; */
+  animation-duration:0.8s;
+  animation-iteration-count:1;
+  animation-timing-function:ease-in;
 }
 
 .toll:hover {
-  transition-duration: 0.5s;
-  transform: scale(1.05);
+  transition-duration: 0.8s;
+  box-shadow: 5px 5px gold;
+  transform: scale(1.03);
+  transition-timing-function: ease-in-out;
+  transition-property: transform, box-shadow;
+  transition-delay:0s, 0.2s;
 }
 
 .toll p {
   font-weight: 100;
-
 }
 
 .toll #p_a {
@@ -502,19 +565,20 @@ body::-webkit-scrollbar-thumb {
 }
 
 .photo-grid .card span {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin: 8%;
-  color: #FC466B;
   /* fallback for old browsers */
-  color: -webkit-linear-gradient(to bottom, #3F5EFB, #FC466B);
+  color: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  text-shadow: 1px 1px 1px #000, 3px 3px 5px #65689f;
   /* Chrome 10-25, Safari 5.1-6 */
-  color: linear-gradient(to bottom, #3F5EFB, #FC466B);
+  /* color: linear-gradient(to bottom, #3F5EFB, #FC466B); */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  text-shadow: 1px 1px 1px #000, 3px 3px 5px blue;
+  /* background-image: linear-gradient(to top, #505285 0%, #585e92 12%, #65689f 25%, #7474b0 37%, #7e7ebb 50%, #8389c7 62%, #9795d4 75%, #a2a1dc 87%, #b5aee4 100%); */
   opacity: 1;
 }
 
 .photo-grid .card:hover {
+  transition: all 500ms;
   box-shadow: rgba(2, 8, 20, 0.1) 0px 0.35em 1.175em,
     rgba(49, 60, 81, 0.08) 0px 0.175em 0.5em;
   transform: translateY(-3px) scale(1.05);
@@ -610,8 +674,91 @@ input[type="text"] {
   background-color: transparent;
   height: 300px;
   perspective: 1000px;
-
 }
+
+@keyframes travelcardAnimationleft {
+  0% {
+    left: 1300px;
+    transform: scale(0.2);
+  }
+  85% {
+    left: -30px;
+  }
+  to {
+    left: 0px;
+  }
+}
+@keyframes travelcardAnimationbottom {
+  0% {
+    bottom: 1300px;
+    transform: scale(0.2);
+  }
+  85% {
+    bottom: -30px;
+  }
+  to {
+    bottom: 0px;
+  }
+}
+@keyframes travelcardAnimationtop {
+  0% {
+    top: 1300px;
+    transform: scale(0.2);
+  }
+  85% {
+    top: -30px;
+  }
+  to {
+    top: 0px;
+  }
+}
+@keyframes travelcardAnimationright {
+  0% {
+    right: 1300px;
+    transform: scale(0.2);
+  }
+  85% {
+    right: -30px;
+  }
+  to {
+    right: 0px;
+  }
+}
+
+.travelcardAnimation {
+  position: relative;
+  --delay: 0.15s;
+  animation-name: travelcardAnimation;
+  /* transition: transform 2s forwards; */
+  animation-duration:1.4s;
+  animation-iteration-count:1;
+  /* animation-direction: alternate; */
+  animation-timing-function: ease-in;
+  /* animation-timing-function:ease-in-out; */
+  animation-fill-mode: forwards;
+}
+
+.travelcardAnimation:nth-child(4n+1) {
+  bottom: 1300px;
+  animation-name: travelcardAnimationbottom;
+  animation-delay: calc(var(--delay) * 10);
+}
+.travelcardAnimation:nth-child(4n+2) {
+  top: 1300px;
+  animation-name: travelcardAnimationtop;
+  animation-delay: calc(var(--delay) * 10);
+}
+.travelcardAnimation:nth-child(4n+3) {
+  left: 1300px;
+  animation-name: travelcardAnimationleft;
+  animation-delay: calc(var(--delay) * 10);
+}
+.travelcardAnimation:nth-child(4n+4) {
+  right: 1300px;
+  animation-name: travelcardAnimationright;
+  animation-delay: calc(var(--delay) * 10);
+}
+
 
 .travelcard h1 {
   font-size: 25px;
@@ -705,6 +852,7 @@ input[type="text"] {
 #tasks button:hover {
   color: blue;
 }
+
 
 #tasks .travelcards {
   display: grid;
@@ -925,9 +1073,6 @@ div.task-option label {
     font-size: x-small;
     margin: 0;
   }
-  
-  
-  
 }
 
 /* ---------------------------------- about --------------------------------- */
